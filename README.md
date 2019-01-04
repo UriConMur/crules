@@ -12,8 +12,19 @@ Currently there is no way to modify this rules, but we will work on customizable
 
 ## Use case
 
-This is recommended to use within a pre-commit hook
+This is recommended to use within a pre-commit hook, e.g. `husky`
+
+```
+"husky": {
+  "hooks": {
+    "pre-commit": "npm run pre-commit"
+  }
+}
+```
 
 ## CLI Check Points
 
 This will guide the developer for a correct contribution in the project.
+
+- Self Code Review
+- Documentation Changes

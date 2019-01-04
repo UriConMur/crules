@@ -17,7 +17,7 @@ This is recommended to use within a pre-commit hook, e.g. `husky`
 ```
 "husky": {
   "hooks": {
-    "pre-commit": "npm run pre-commit"
+    "pre-commit": "crules"
   }
 }
 ```

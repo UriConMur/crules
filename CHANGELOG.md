@@ -10,6 +10,12 @@ Type of Updates:
 - Removed
 - Fixed
 
+## [0.2.4]
+
+### Fixed
+- [Patch] Documentation changes in README.md
+
+
 ## [0.2.1]
 
 ### Fixed

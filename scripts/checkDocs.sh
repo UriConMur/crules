@@ -1,6 +1,6 @@
 sleep 1s
 exec < /dev/tty
-printf " 🚧  CHECKING DOCUMENTATION CHANGES 🚧\n\n"
+printf "      🚧  CHECKING DOCUMENTATION CHANGES 🚧\n\n"
 printf " 🤖  - The system has prepared this file checklist to confirm that all documentation is updated with your changes.\n\n" 
 
 # Required
@@ -19,22 +19,13 @@ else
   printf "      ⚠️  - CHANGELOG.md file does not exists"
 fi
 
-printf "\n\n"
+printf "\n"
 
-# Just to confirm
-printf "      The following list is optional to be updated with each commit.\n\n"
-optionalFilesUpdated=true
-
-if [ -f "README.md" ]; then
-  readmeChanges=$(git diff --staged README.md)
-  if [ -n "$readmeChanges" ]; then
-    printf "      ✅  - README.md"
-  else
-    printf "      ❌  - README.md"
-    optionalFilesUpdated=false
-  fi
-else 
-  printf "      ⚠️  - README.md file does not exists"
+unstagedFiles=false
+unstageChanges=$(git diff)
+if [ -n "$unstageChanges" ]; then
+  unstagedFiles=true
+  printf "      ❌  - You have unstaged files"
 fi
 
 printf "\n\n"
@@ -44,10 +35,10 @@ if [ "$requiredFilesUpdated" == "false" ]; then
   exit 1
 fi
 
-if [ "$optionalFilesUpdated" == "false" ]; then
-  printf "      Some optional files are not changed. 🤔\n"
+if [ "$unstagedFiles" == "true" ]; then
+  printf "      There are some unstaged files. 🤔\n"
   printf "      Do you want to continue? (Y/N)\n\n"
-  read -p " 👩🏽‍💻  - " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+  read -p " 🙂  - " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 fi
 
 printf "\n"

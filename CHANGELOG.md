@@ -10,6 +10,11 @@ Type of Updates:
 - Removed
 - Fixed
 
+## [0.2.5]
+
+### Removed
+- [Patch] Remove script for self review until we can configure list of questions - TODO
+
 ## [0.2.4]
 
 ### Fixed
